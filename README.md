@@ -4,4 +4,6 @@ SlashServer
 ![Velocity v1.0](https://img.shields.io/badge/Velocity-v1.0-green.svg)
 ![Java JDK v1.8](https://img.shields.io/badge/Java%20JDK-v1.8-blue.svg)
 
-This plugin adds /server command aliases
+This plugin adds /server command aliases for velocity, for example
+/lobby is aliased to /server lobby
+/survival is aliased to /server survival
