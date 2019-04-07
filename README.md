@@ -7,7 +7,7 @@ SlashServer
 This plugin adds /server command aliases for velocity, for example  
 /lobby is aliased to /server lobby  
 /survival is aliased to /server survival  
-Server commands require the permission nodes of server.<name>
+Server commands require the permission nodes of server.\<name\>
 
 Note: Server commands and permission nodes are the lowercase form of the server name
 
