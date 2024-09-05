@@ -1,27 +1,19 @@
 package sr.will.slashserver;
 
-import com.velocitypowered.api.command.Command;
-import com.velocitypowered.api.command.CommandSource;
-import net.kyori.text.TextComponent;
-import net.kyori.text.format.TextColor;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.optional.qual.MaybePresent;
+import com.mojang.brigadier.Command;
+import com.velocitypowered.api.command.BrigadierCommand;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 
-public class CommandReload implements Command {
-    private SlashServer plugin;
-
-    public CommandReload(SlashServer plugin) {
-        this.plugin = plugin;
-    }
-
-    @Override
-    public void execute(@MaybePresent CommandSource cs, @NonNull @MaybePresent String[] args) {
-        plugin.reload();
-        cs.sendMessage(TextComponent.of("Plugin reloaded!", TextColor.GREEN));
-    }
-
-    @Override
-    public boolean hasPermission(@MaybePresent CommandSource cs, @NonNull @MaybePresent String[] args) {
-        return cs.hasPermission("slashserver.reload");
+public class CommandReload {
+    public static BrigadierCommand getCommand(SlashServer plugin) {
+        return new BrigadierCommand(BrigadierCommand.literalArgumentBuilder("ssreload")
+                .requires(cs -> cs.hasPermission("slashserver.reload"))
+                .executes(ctx -> {
+                    plugin.reload();
+                    ctx.getSource().sendMessage(Component.text("Plugin reloaded!", NamedTextColor.GREEN));
+                    return Command.SINGLE_SUCCESS;
+                })
+                .build());
     }
 }

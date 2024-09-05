@@ -70,9 +70,10 @@ fabric.properties
 ### Gradle template
 .gradle
 /build/
+/*/build/
 
 # Ignore Gradle GUI config
-gradle-app.setting
+gradle-agent.setting
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
@@ -84,3 +85,4 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 .idea/
+.iml
